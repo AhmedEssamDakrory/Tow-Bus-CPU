@@ -1,0 +1,7 @@
+ADD R0,R1
+ADD R0,@(R1)
+INC R5
+MOV @(R0)+,@-(R1)
+mov   temp (  R7 )   , @  - (R3)
+vmp    (  R7 )+   , @  xx (R3)
+ADD @  temp (  R7 )   ,   - (R3) 
