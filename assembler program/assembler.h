@@ -3,13 +3,14 @@
 using namespace std;
 
 struct Operand{
-	bool Dir , noOperand , isBranch , isValue ;
+	bool Dir , noOperand , isBranch , isValue , immediate , absolute ;
 	int reg_num , mode;
 	bitset<8> offset;
 	bitset<16> indexed_value;
 	Operand(){
 		isBranch = false ; isValue = false;
 		Dir = false , noOperand = true;
+		immediate = absolute = false;
 		reg_num = 0;
 		mode = 0;
 	}
@@ -41,7 +42,10 @@ class Assembler{
 	//this vector contains op codes
 	vector<bitset<16>> codes;
 	// utility functions  //***********************************************************************************//
-
+	bool isDigit(char x){
+		for(int i = 0 ; i <= 9 ; i ++ ) if(x-'0' == i ) return true;
+		return false;
+	}
 	int operationType(string s){
 		int type = -1;
 		for(auto x : operand_2 ){
@@ -75,6 +79,7 @@ class Assembler{
 	}
 
 	string fetchOperation(string s , int& i){
+
 		// fetching operation
 		while(s[i] == ' ') ++i;
 		string op="";
@@ -83,10 +88,34 @@ class Assembler{
 	}
 
 	Operand parseString(string s){
+
 		int i = 0;
 		// checking if direct or in indirect
 		Operand operand;
 		while(s[i] == ' ') ++i;
+
+		if(s[i] == '#'){
+			++i;
+			string num = "";
+			while(i < (int) s.size() && s[i] != ' ') num += s[i++];
+			operand.immediate = true;
+			operand.indexed_value = toBinary(stoi(num));
+			operand.Dir = true;
+			operand.mode = AUTOINC;
+			operand.reg_num = 7;
+			return operand;
+		}
+		else if(isDigit(s[i])){
+			string num = "";
+			while(i < (int) s.size() && s[i] != ' ') num += s[i++];
+			operand.absolute = true;
+			operand.indexed_value = toBinary(stoi(num));
+			operand.Dir = true;
+			operand.mode = INDEXED;
+			operand.reg_num = 7;
+			return operand;
+		}
+
 		if(s[i] != '@') operand.Dir = true;
 		if( !operand.Dir  ) i++;
 		//checking if autoDecrement or indexed
@@ -114,6 +143,7 @@ class Assembler{
 		operand.reg_num = oper[(int)oper.size()-1]-'0';
 		return operand;
 	}
+
 	bitset<4> encode_2_operand(string s){
 		bitset<4> b;
 		int l = 3 , r = 0;
@@ -173,10 +203,25 @@ public:
 	Assembler(string file_name){
 		ifstream cin; cin.open(file_name);
 		string s;
+		getline(cin , s);
+		int address = stoi(&s[1]);
 		while(getline(cin , s)){
+			// incrementing address.
+			address++;
 			int i =0;
 			string op = fetchOperation(s,i);
+			//check if variable
+			if(op[0] == '#'){
+				bitset<16> b = toBinary(stoi(&op[1]));
+				Operand opp;
+				opp.isValue = true;
+				opp.indexed_value = b;
+				instr.push_back({"",{opp,opp}});
+				continue;
+			}
+
 			int op_type = operationType(op);
+			// check if Branch operand..
 			if(op_type == BR_OPERAND){
 				while(s[i] == ' ') ++i;
 				string offset = "";
@@ -194,6 +239,7 @@ public:
 			string s1 = "";
 			while(s[i] != ',' && i < (int)s.size()) s1 += s[i++];
 			Operand operand1 = parseString(s1);
+
 			operand1.noOperand = false;
 			Operand operand2;
 			if(i<(int) s.size()){
@@ -204,8 +250,30 @@ public:
 				operand2.noOperand = false;
 			}
 			instr.push_back({op , {operand1 , operand2}});
+			if(operand1.absolute){
+				Operand opp;
+				opp.isValue = true;
+				opp.indexed_value = toBinary((operand1.indexed_value).to_ulong()-(address+2));
+				instr.push_back({"" , {opp , opp}});
+				address++;
+			}
+			if(operand2.absolute){
+				Operand opp;
+				opp.isValue = true;
+				opp.indexed_value = toBinary((operand2.indexed_value).to_ulong()-(address+2));
+				instr.push_back({"" , {opp , opp}});
+				address++;
+			}
 
-			if(operand1.mode == INDEXED){
+			if(operand1.immediate){
+				Operand opp;
+				opp.isValue = true;
+				opp.indexed_value = operand1.indexed_value;
+				instr.push_back({"" , {opp , opp}});
+				address++;
+			}
+
+			if(operand1.mode == INDEXED && !operand1.absolute){
 				string x;
 				getline(cin , x);
 				int j = 0;
@@ -218,7 +286,7 @@ public:
 				operand.indexed_value = b;
 				instr.push_back({"" , {operand , operand}});
 			}
-			if(operand2.mode == INDEXED){
+			if(operand2.mode == INDEXED && !operand2.absolute){
 				string x;
 				getline(cin , x);
 				int j = 0;
@@ -248,16 +316,16 @@ public:
 				bitset<4> b = encode_2_operand(op);
 				int j=0;
 				for(int i = 12 ; i < 16 ; i++) code[i] = b[j++];
-				if(!instruction.second.first.Dir) code[11] = 1;
-				if(!instruction.second.second.Dir) code[5] = 1;
+				if(!instruction.second.first.Dir) code[9] = 1;
+				if(!instruction.second.second.Dir) code[3] = 1;
 				int mode_src  =  instruction.second.first.mode;
 				int mode_dest = instruction.second.second.mode;
-				if(mode_src == AUTOINC) code[9] = 1;
-				else if(mode_src == AUTODEC) code[10] = 1;
-				else if(mode_src == INDEXED) code[9] = 1 , code[10] = 1;
-				if(mode_dest == AUTOINC) code[3] = 1;
-				else if(mode_dest == AUTODEC) code[4] = 1;
-				else if(mode_dest == INDEXED) code[3] = 1 , code[4] = 1;
+				if(mode_src == AUTOINC) code[10] = 1;
+				else if(mode_src == AUTODEC) code[11] = 1;
+				else if(mode_src == INDEXED) code[10] = 1 , code[11] = 1;
+				if(mode_dest == AUTOINC) code[4] = 1;
+				else if(mode_dest == AUTODEC) code[5] = 1;
+				else if(mode_dest == INDEXED) code[4] = 1 , code[5] = 1;
 				bitset<16> src_num = toBinary(instruction.second.first.reg_num);
 				bitset<16> dest_num = toBinary(instruction.second.second.reg_num);
 				j = 0;
@@ -270,11 +338,11 @@ public:
 				code[10] = 1;
 				int j = 0;
 				for(int i = 6 ; i<=9; ++i) code[i] = b[j++];
-				if(!instruction.second.first.Dir) code[5] = 1;
+				if(!instruction.second.first.Dir) code[3] = 1;
 				int mode_src  =  instruction.second.first.mode;
-				if(mode_src == AUTOINC) code[3] = 1;
-				else if(mode_src == AUTODEC) code[4] = 1;
-				else if(mode_src == INDEXED) code[3] = 1 , code[4] = 1;
+				if(mode_src == AUTOINC) code[4] = 1;
+				else if(mode_src == AUTODEC) code[5] = 1;
+				else if(mode_src == INDEXED) code[4] = 1 , code[5] = 1;
 				bitset<16> src_num = toBinary(instruction.second.first.reg_num);
 				j = 0;
 				for(int i = 0 ; i <= 2 ; i++) code[i] = src_num[j++];

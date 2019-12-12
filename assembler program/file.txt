@@ -1,7 +1,16 @@
-ADD R0,R1
-ADD R0,@(R1)
-INC R5
+#0
+mov #9 , R1
+mov 9 , 10
+mov   temp (  R7 )   , x (R3)
+16
+128	
+bhs 32 
+rlc R5
+jsr R0,R1
+sub @R0,@(R1)
 MOV @(R0)+,@-(R1)
-mov   temp (  R7 )   , @  - (R3)
-vmp    (  R7 )+   , @  xx (R3)
-ADD @  temp (  R7 )   ,   - (R3) 
+BHI 32
+#9
+#11
+#10
+#33 
