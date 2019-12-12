@@ -3,11 +3,12 @@
 using namespace std;
 
 struct Operand{
-	bool Dir , noOperand , isBranch ;
+	bool Dir , noOperand , isBranch , isValue ;
 	int reg_num , mode;
 	bitset<8> offset;
+	bitset<16> indexed_value;
 	Operand(){
-		isBranch = false;
+		isBranch = false ; isValue = false;
 		Dir = false , noOperand = true;
 		reg_num = 0;
 		mode = 0;
@@ -203,6 +204,33 @@ public:
 				operand2.noOperand = false;
 			}
 			instr.push_back({op , {operand1 , operand2}});
+
+			if(operand1.mode == INDEXED){
+				string x;
+				getline(cin , x);
+				int j = 0;
+				while(x[j] == ' ') ++j;
+				string num ="";
+				while(j < (int) x.size() && x[j] !=' ') num += x[j++];
+				bitset<16> b = toBinary(stoi(num));
+				Operand operand;
+				operand.isValue = true;
+				operand.indexed_value = b;
+				instr.push_back({"" , {operand , operand}});
+			}
+			if(operand2.mode == INDEXED){
+				string x;
+				getline(cin , x);
+				int j = 0;
+				while(x[j] == ' ') ++j;
+				string num ="";
+				while(j < (int) x.size() && x[j] !=' ') num += x[j++];
+				bitset<16> b = toBinary(stoi(num));
+				Operand operand;
+				operand.isValue = true;
+				operand.indexed_value = b;
+				instr.push_back({"" , {operand , operand}});
+			}
 		}
 
 	}
@@ -210,6 +238,10 @@ public:
 	void encode(){
 		for(auto instruction : instr){
 			bitset<16> code;
+			if(instruction.second.first.isValue){
+				codes.push_back(instruction.second.first.indexed_value);
+				continue;
+			}
 			string op = instruction.first;
 			int op_type = operationType(op);
 			if(op_type == OPERAND_2){
