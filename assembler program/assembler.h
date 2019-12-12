@@ -3,9 +3,11 @@
 using namespace std;
 
 struct Operand{
-	bool Dir , noOperand ;
+	bool Dir , noOperand , isBranch ;
 	int reg_num , mode;
+	bitset<8> offset;
 	Operand(){
+		isBranch = false;
 		Dir = false , noOperand = true;
 		reg_num = 0;
 		mode = 0;
@@ -31,7 +33,7 @@ class Assembler{
 
 	const vector<string> operand_2{ "mov" , "add" , "adc" , "sub" , "suc" , "and" , "or" , "xnor" , "cmp" , "jsr" };
 	const vector<string> operand_1{ "inc" , "dec" , "clr" , "inv" , "lsr" , "ror" , "rrc" , "asr" , "lsl" , "rol" ,"rlc" };
-	const vector<string> operand_br{ "br" , "beq" , "bne" , "blo" , "rls" , "bhi" , "bhs" };
+	const vector<string> operand_br{ "br" , "beq" , "bne" , "blo" , "bls" , "bhi" , "bhs" };
 	const vector<string> operand_no{ "rts" , "interrupt" , "iret" , "hlt" , "nop"};
 	// this vector contains instructions read from file
 	vector<pair<string , pair<Operand , Operand>>> instr;
@@ -119,8 +121,12 @@ class Assembler{
 				b[r] = 1;
 				break;
 			}
-			++r;
-			if(r == l) b[r] = 1 , r = 0 , l--;
+			else{
+				if(l == r){
+					b[r] = 1; l-- ; r=0;
+				}
+				else r++;
+			}
 		}
 		return b;
 	}
@@ -134,8 +140,27 @@ class Assembler{
 				b[r] = 1;
 				break;
 			}
-			++r;
-			if(r == l) b[r] = 1 , r = 0 , l--;
+			else{
+				if(l == r) b[r] = 1 , l-- , r=0;
+				else r++;
+			}
+		}
+		return b;
+	}
+
+	bitset<3> encode_br_opernad(string s){
+		bitset<3> b;
+		if(s == "bhs") return b;
+		int l = 2 , r = 0;
+		for(auto x : operand_br){
+			if(x == s){
+				b[r] = 1;
+				break;
+			}
+			else{
+				if(l == r) b[r] = 1 , l-- , r=0;
+				else r++;
+			}
 		}
 		return b;
 	}
@@ -150,6 +175,21 @@ public:
 		while(getline(cin , s)){
 			int i =0;
 			string op = fetchOperation(s,i);
+			int op_type = operationType(op);
+			if(op_type == BR_OPERAND){
+				while(s[i] == ' ') ++i;
+				string offset = "";
+				while(i < (int) s.size()) offset += s[i++];
+				int offset_ = stoi(offset);
+				bitset<16> b = toBinary(offset_);
+				Operand operand1;
+				for(int i = 0 ; i <= 7 ; ++i)
+					operand1.offset[i] = b[i];
+				operand1.isBranch = true;
+				instr.push_back({op , {operand1 , operand1}});
+				continue;
+			}
+
 			string s1 = "";
 			while(s[i] != ',' && i < (int)s.size()) s1 += s[i++];
 			Operand operand1 = parseString(s1);
@@ -207,6 +247,14 @@ public:
 				j = 0;
 				for(int i = 0 ; i <= 2 ; i++) code[i] = src_num[j++];
 			}
+			else if(op_type == BR_OPERAND){
+				code[11] = 1;
+				bitset<3> b = encode_br_opernad(op);
+				code[10] = b[2] , code[9] = b[1] , code[8] = b[0];
+				bitset<8> offset = instruction.second.first.offset;
+				for(int i = 7 ; i >= 0 ; i--) code[i] = offset[i];
+			}
+
 			codes.push_back(code);
 		}
 	}
@@ -223,3 +271,4 @@ public:
 	}
 
 };
+
