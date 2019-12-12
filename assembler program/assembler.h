@@ -206,6 +206,8 @@ public:
 		getline(cin , s);
 		int address = stoi(&s[1]);
 		while(getline(cin , s)){
+
+			if(s=="") continue;
 			// incrementing address.
 			address++;
 			int i =0;
