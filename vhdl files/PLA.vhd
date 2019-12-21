@@ -3,7 +3,7 @@ USE IEEE.std_logic_1164.all;
 ENTITY PLA IS
 	PORT( ir                    :    IN std_logic_vector (15 DOWNTO 0);
 	      na                    :    IN std_logic_vector (4 DOWNTO 0); -- next address
-	      flags                 :    IN std_logic_vector(1 Downto 0); -- flag register from alu 0-> zero flag and 1-> carry flag
+	      flags                 :    IN std_logic_vector(15 Downto 0); -- flag register from alu 0-> zero flag and 1-> carry flag
 	      F                     :    OUT std_logic_vector (4 DOWNTO 0)	); -- next address after branching
 END ENTITY PLA;
 

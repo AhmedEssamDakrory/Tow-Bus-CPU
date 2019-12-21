@@ -1,10 +1,5 @@
 
 -- Simple generic RAM Model
---
--- +-----------------------------+
--- |    Copyright 2008 DOULOS    |
--- |   designer :  JK            |
--- +-----------------------------+
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.all;

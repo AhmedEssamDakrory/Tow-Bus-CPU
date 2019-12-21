@@ -20,7 +20,7 @@ L7
 VDD]CPiV_NKbA^NHFUV;X=3
 Z11 OV;C;10.1d;51
 32
-Z12 !s108 1576922588.639000
+Z12 !s108 1576945973.488000
 Z13 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/ALU.vhd|
 Z14 !s107 E:/Tow-Bus-CPU-master/vhdl files/ALU.vhd|
 Z15 o-work work -2002 -explicit -O0
@@ -61,7 +61,7 @@ L5
 V6V_257o_W`Dj9[GQl]9[62
 R11
 32
-Z20 !s108 1576922589.046000
+Z20 !s108 1576945973.982000
 Z21 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/decoder.vhd|
 Z22 !s107 E:/Tow-Bus-CPU-master/vhdl files/decoder.vhd|
 R15
@@ -86,55 +86,94 @@ R16
 !s100 Il3_mF@6cnHIeAMQ`Qz_61
 !i10b 1
 Epla
-R17
+Z23 w1576936778
 R6
 R7
 R8
-Z23 8E:/Tow-Bus-CPU-master/vhdl files/PLA.vhd
-Z24 FE:/Tow-Bus-CPU-master/vhdl files/PLA.vhd
+Z24 8E:/Tow-Bus-CPU-master/vhdl files/PLA.vhd
+Z25 FE:/Tow-Bus-CPU-master/vhdl files/PLA.vhd
 l0
 L3
-VmdL<lKGeaQUh[2gRjn_A11
+VN6]zc`a_L:B37:aM`_Gj32
 R11
 32
-Z25 !s108 1576922589.319000
-Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/PLA.vhd|
-Z27 !s107 E:/Tow-Bus-CPU-master/vhdl files/PLA.vhd|
+Z26 !s108 1576945974.309000
+Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/PLA.vhd|
+Z28 !s107 E:/Tow-Bus-CPU-master/vhdl files/PLA.vhd|
 R15
 R16
-!s100 1R`gDZ3i[@^8QIGMGGUnd1
+!s100 A=BoU[781h:[i_VHEVbYl3
 !i10b 1
 Aarch1
 R6
 R7
-DEx4 work 3 pla 0 22 mdL<lKGeaQUh[2gRjn_A11
+DEx4 work 3 pla 0 22 N6]zc`a_L:B37:aM`_Gj32
 l28
 L11
 Vc;8352hK_<FWgl`5ck5`N3
 R11
 32
-R25
 R26
 R27
+R28
 R15
 R16
 !s100 N;3GBKcn>5CLUDe?SHOQ93
 !i10b 1
-Ereg
-Z28 w1576839972
+Eprocessor
+Z29 w1576946393
+Z30 DPx4 ieee 16 std_logic_textio 0 22 ?Il0a149GV276[?[UMDWh2
+R4
 R6
 R7
 R8
-Z29 8E:/Tow-Bus-CPU-master/vhdl files/REG.vhd
-Z30 FE:/Tow-Bus-CPU-master/vhdl files/REG.vhd
+Z31 8E:/Tow-Bus-CPU-master/vhdl files/Processor.vhd
+Z32 FE:/Tow-Bus-CPU-master/vhdl files/Processor.vhd
+l0
+L7
+VU8HMMeSI_;3dTHz6z08X@2
+!s100 ZgdzZzC<ja7f5[5o9?2IG2
+R11
+32
+!i10b 1
+Z33 !s108 1576946403.020000
+Z34 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/Processor.vhd|
+Z35 !s107 E:/Tow-Bus-CPU-master/vhdl files/Processor.vhd|
+R15
+R16
+Aarch
+R30
+R4
+R6
+R7
+Z36 DEx4 work 9 processor 0 22 U8HMMeSI_;3dTHz6z08X@2
+l118
+L17
+VAUhm287cDRDK5?9MGJF5I2
+!s100 fk?L9U]DISQFCRcJO=hSD1
+R11
+32
+!i10b 1
+R33
+R34
+R35
+R15
+R16
+Ereg
+Z37 w1576839972
+R6
+R7
+R8
+Z38 8E:/Tow-Bus-CPU-master/vhdl files/REG.vhd
+Z39 FE:/Tow-Bus-CPU-master/vhdl files/REG.vhd
 l0
 L4
 V<_6?jJIGn0W;1k<aMKQh53
 R11
 32
-Z31 !s108 1576922593.386000
-Z32 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/REG.vhd|
-Z33 !s107 E:/Tow-Bus-CPU-master/vhdl files/REG.vhd|
+Z40 !s108 1576945975.051000
+Z41 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/REG.vhd|
+Z42 !s107 E:/Tow-Bus-CPU-master/vhdl files/REG.vhd|
 R15
 R16
 !s100 >GQV^MOYFh6RA:k9_NdkB1
@@ -148,30 +187,30 @@ L11
 VdZ4P1lI>T^G1@<JU3Q8`L2
 R11
 32
-R31
-R32
-R33
+R40
+R41
+R42
 R15
 R16
 !s100 Mdm[K;PY_LJ:OD`CM2<:j1
 !i10b 1
 Eregister_entity
-Z34 w1576921144
+Z43 w1576921144
 R3
 R2
 R6
 R7
 R8
-Z35 8E:/Tow-Bus-CPU-master/vhdl files/Register.vhd
-Z36 FE:/Tow-Bus-CPU-master/vhdl files/Register.vhd
+Z44 8E:/Tow-Bus-CPU-master/vhdl files/Register.vhd
+Z45 FE:/Tow-Bus-CPU-master/vhdl files/Register.vhd
 l0
 L5
 VkTAg?c05hM@kU6k82W1BW2
 R11
 32
-Z37 !s108 1576922593.674000
-Z38 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/Register.vhd|
-Z39 !s107 E:/Tow-Bus-CPU-master/vhdl files/Register.vhd|
+Z46 !s108 1576945975.384000
+Z47 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/Register.vhd|
+Z48 !s107 E:/Tow-Bus-CPU-master/vhdl files/Register.vhd|
 R15
 R16
 !s100 4A8C6jQ`X7=_YB66KG;8<0
@@ -187,9 +226,9 @@ L14
 V=1KT?mOcK1i]RV7BcP1393
 R11
 32
-R37
-R38
-R39
+R46
+R47
+R48
 R15
 R16
 !s100 TfAn8DMFg4jS[]dT<KPR03
@@ -200,16 +239,16 @@ R4
 R6
 R7
 R8
-Z40 8E:/Tow-Bus-CPU-master/vhdl files/Rom.vhd
-Z41 FE:/Tow-Bus-CPU-master/vhdl files/Rom.vhd
+Z49 8E:/Tow-Bus-CPU-master/vhdl files/Rom.vhd
+Z50 FE:/Tow-Bus-CPU-master/vhdl files/Rom.vhd
 l0
 L5
 V?K2V^XYgYkeV5:c97^RE`1
 R11
 32
-Z42 !s108 1576922593.987000
-Z43 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/Rom.vhd|
-Z44 !s107 E:/Tow-Bus-CPU-master/vhdl files/Rom.vhd|
+Z51 !s108 1576945975.776000
+Z52 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/Rom.vhd|
+Z53 !s107 E:/Tow-Bus-CPU-master/vhdl files/Rom.vhd|
 R15
 R16
 !s100 X5gmf[d8;@gl[J2HHgNi83
@@ -224,28 +263,28 @@ L18
 VXQS`WB4A_OTHVb3S1jTLh2
 R11
 32
-R42
-R43
-R44
+R51
+R52
+R53
 R15
 R16
 !s100 ]W1mHn5<XOMA:G;[J_XV61
 !i10b 1
 Esig_generator
-R17
+Z54 w1576936325
 R6
 R7
 R8
-Z45 8E:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd
-Z46 FE:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd
+Z55 8E:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd
+Z56 FE:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd
 l0
 L3
 VJhlN_RI@`7=36Sf<5]V_;3
 R11
 32
-Z47 !s108 1576922594.381000
-Z48 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd|
-Z49 !s107 E:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd|
+Z57 !s108 1576945976.144000
+Z58 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd|
+Z59 !s107 E:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd|
 R15
 R16
 !s100 W9?nnDfZGPC>=mj`8Bch[0
@@ -259,67 +298,67 @@ L22
 VgiF`kONYB=?_>oj6CnfBY1
 R11
 32
-R47
-R48
-R49
+R57
+R58
+R59
 R15
 R16
 !s100 Ph`fAB3cQ?K`@]Rj?;G?N1
 !i10b 1
 Esync_ram
-Z50 w1576922623
-Z51 DPx4 ieee 16 std_logic_textio 0 22 ?Il0a149GV276[?[UMDWh2
+Z60 w1576924590
+R30
 R4
 R6
 R7
 R8
-Z52 8E:/Tow-Bus-CPU-master/vhdl files/Ram.vhd
-Z53 FE:/Tow-Bus-CPU-master/vhdl files/Ram.vhd
+Z61 8E:/Tow-Bus-CPU-master/vhdl files/Ram.vhd
+Z62 FE:/Tow-Bus-CPU-master/vhdl files/Ram.vhd
 l0
-L15
+L10
 VPkbFk^l<F[P7MdN^i2hJ?3
-!s100 P_5LH6]nm`i9:WYAi1hl@0
 R11
 32
-!i10b 1
-Z54 !s108 1576922629.395000
-Z55 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/Ram.vhd|
-Z56 !s107 E:/Tow-Bus-CPU-master/vhdl files/Ram.vhd|
+Z63 !s108 1576945974.681000
+Z64 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/Ram.vhd|
+Z65 !s107 E:/Tow-Bus-CPU-master/vhdl files/Ram.vhd|
 R15
 R16
+!s100 OIgeeB=5RAYRof6_@VX?X0
+!i10b 1
 Artl
-R51
+R30
 R4
 R6
 R7
-Z57 DEx4 work 8 sync_ram 0 22 PkbFk^l<F[P7MdN^i2hJ?3
-l46
-L25
+DEx4 work 8 sync_ram 0 22 PkbFk^l<F[P7MdN^i2hJ?3
+l41
+L20
 Vh7j2NeiWinGbaYBLf_3le3
-!s100 9S;iSGYSb0@Mhh[h9K[`Y2
 R11
 32
-!i10b 1
-R54
-R55
-R56
+R63
+R64
+R65
 R15
 R16
+!s100 zIbQ0c>9jE6m_iY6BRQG[3
+!i10b 1
 Etri_state
-Z58 w1576840077
+Z66 w1576840077
 R6
 R7
 R8
-Z59 8E:/Tow-Bus-CPU-master/vhdl files/triState.vhd
-Z60 FE:/Tow-Bus-CPU-master/vhdl files/triState.vhd
+Z67 8E:/Tow-Bus-CPU-master/vhdl files/triState.vhd
+Z68 FE:/Tow-Bus-CPU-master/vhdl files/triState.vhd
 l0
 L4
 VNBTK9RBLC7F]5=ccH0YY11
 R11
 32
-Z61 !s108 1576922594.650000
-Z62 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/triState.vhd|
-Z63 !s107 E:/Tow-Bus-CPU-master/vhdl files/triState.vhd|
+Z69 !s108 1576945976.769000
+Z70 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/triState.vhd|
+Z71 !s107 E:/Tow-Bus-CPU-master/vhdl files/triState.vhd|
 R15
 R16
 !s100 bXYR?H07dgNV71==PUnTN0
@@ -333,9 +372,9 @@ L11
 VPG4V6C[FmCZ_UA;2Dmj@o3
 R11
 32
-R61
-R62
-R63
+R69
+R70
+R71
 R15
 R16
 !s100 V37OfOPK6AO6XAF?imVlQ3
