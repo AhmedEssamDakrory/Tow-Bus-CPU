@@ -7,7 +7,7 @@ use IEEE.std_logic_signed.all;
 entity ALU is
     port(
         clk:in std_logic;
-        Operation:in std_logic_vector(27 downto 0);
+        Operation:in std_logic_vector(21 downto 0);
         A,Dstin :in std_logic_vector(16 downto 0);
         F:out std_logic_vector(15 downto 0)
     );

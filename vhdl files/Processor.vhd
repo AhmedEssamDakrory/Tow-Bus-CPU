@@ -33,8 +33,8 @@ end component;
 component ALU is
     port(
         clk:in std_logic;
-        Operation:in std_logic_vector(27 downto 0);
-        A,B :in std_logic_vector(16 downto 0);
+        Operation:in std_logic_vector(21 downto 0);
+        A,Dstin :in std_logic_vector(16 downto 0);
         F:out std_logic_vector(15 downto 0)
     );
 end component;
@@ -51,9 +51,9 @@ component sig_generator IS
  	      ir                    :   IN std_logic_vector(15 DOWNTO 0 );
  	      MPC                   :   IN std_logic_vector(4 DOWNTO 0);
  	      
-	     	alu                    :   out std_logic_vector(7 DOWNTO 0);	--f0	0 3
+	     	alu                    :   out std_logic_vector(7 DOWNTO 0);	--f0	0 2
 	     	alu1                  :   out std_logic_vector (10 DOWNTO 0);	-- 0 10
-	     	alu2                  :   out std_logic_vector(15 DOWNTO 0);	-- 0 8
+	     	alu2                  :   out std_logic_vector(15 DOWNTO 0);	-- 0 7
 	     	out1                  :   out std_logic_vector (7 DOWNTO 0);	--f1
 	     	out2                  :   out std_logic_vector (7 DOWNTO 0);	--f2
 	     	in1                   :   out std_logic_vector (7 DOWNTO 0);	--f3
@@ -95,7 +95,7 @@ component PLA IS
 END component;
 
 --data
-signal R0,R1,R2,R3,R4,R5,R6,R7,MDR,MAR,DST,SRC,Z,IR,flags , bus_a_or_b1,bus_a_or_b2 : std_logic_vector(15 downto 0);
+signal R0,R1,R2,R3,R4,R5,R6,R7,MDR,MAR,DST,SRC,Z,IR,flags , bus_a_or_b1,bus_a_or_b2,F,address_Field_Of_IR : std_logic_vector(15 downto 0);
 --f0
 signal MDRin,DSTin,SRCin_a,INC_A,DEC_A,ADD_AB  : std_logic;
 --f1
@@ -106,15 +106,16 @@ signal IRout,Zout,Zout1,MARout,MARin_A : std_logic;
 signal R0in,R7in,R1in,R2in,R3in,R4in,R5in,R6in,SRCin_b,flag,RD,WR : std_logic;
 --f4
 signal Zin,IRin,MARin_B,SRCin_a_or_b,MARin_A_or_B : std_logic;
+signal operation :std_logic_vector(21 downto 0);
 
 --groups
-signal f0,f1,f2,f3,f4,which_Rin , which_Rout : std_logic_vector(7 downto 0);
-
+signal f0,f1,f2,f3,which_Rin , which_Rout : std_logic_vector(7 downto 0);
+signal f4 : std_logic_vector(3 downto 0);
 signal alu1 : std_logic_vector(10 downto 0); 
 signal alu2 : std_logic_vector(15 downto 0);
 signal MicroI_data : std_logic_vector(18 downto 0); 
 signal MPC,tmp : std_logic_vector(4 downto 0);
-
+signal con1 , con2 : std_logic_vector(16 downto 0);
 begin
   
   
@@ -189,6 +190,7 @@ Zin <= f4(0);
 IRin <= f4(1);
 MARin_B <= f4(2);
 
+Ram_1 : sync_ram port map(clk , WR , MAR , MDR , MDR);
 fetch_Micro_instruction: ROM port map(MPC , MicroI_data , clk);
 fetch_next_address: PLA port map(IR , MPC ,flags , tmp );
 MPC <= tmp;
@@ -202,20 +204,19 @@ R_6: REG port map(busb,'1',clk,R6in,R6);
 R_7: REG port map(busb,'1',clk,R7in,R7);
 IR_1: REG port map(busa , '1' , clk , IRin , IR );
 DST_1: REG port map(busa , '1' , clk , DSTin , DST );
-
+Z_1 : REG port map(F , '1' , clk , Zin , Z);
 bus_a_or_b1 <= busa when SRCin_a = '1'
 else busb;
 
 SRCin_a_or_b <= SRCin_a or SRCin_b;
-MARin_A_or_B <= MARin_A or MARin_B;
 SRC_1: REG port map(bus_a_or_b1 , '1' , clk ,SRCin_a_or_b, SRC );
 
 bus_a_or_b2 <= busa when MARin_A = '1'
 else busb;
 
+MARin_A_or_B <= MARin_A or MARin_B;
 MAR_1: REG port map(bus_a_or_b2 , '1' , clk , MARin_A_or_B, MAR );
 MDR_1 : REG port map( busa, '1' , clk , MDRin , MDR );
-
 
 TRI_STATE_R0: TRI_STATE port map(R0out , R0 , busa );
 TRI_STATE_R1: TRI_STATE port map(R1out , R1 , busa );
@@ -227,13 +228,18 @@ TRI_STATE_R6: TRI_STATE port map(R6out , R6 , busa );
 TRI_STATE_R7: TRI_STATE port map(R7out , R7 , busa );
 TRI_STATE_MAR: TRI_STATE port map(MARout , MAR , busb );
 TRI_STATE_MDR: TRI_STATE port map(MDRout , MDR , busa );
-TRI_STATE_IR: TRI_STATE port map(IRout , IR , busb );
+address_Field_Of_IR <= '00000000'&IR(7 downto 0);
+TRI_STATE_IR: TRI_STATE port map(IRout , address_Field_Of_IR , busb );
 TRI_STATE_SRC: TRI_STATE port map(SRCout , SRC , busa );
+TRI_STATE_Zout: TRI_STATE port map(Zout , Z , busb);
+
+operation <= alu1(10 downto 0) & alu2(7 downto 0) & f0(2 downto 0);
+sig_generator_1 : sig_generator port map(MicroI_data , IR , MPC , f0 , alu1 , alu2 , f1 , f2 , f3 , f4 , which_Rin , which_Rout );
+con1 <= '0' & busa;
+con2 <= '0' & DST;
+ALU_1:ALU port map(clk,operation,con1,con2,F);
 
 
-
-
---sig_generator_1 : sig_generator port map(MicroI_data , IR , MPC , f0 , alu1 , alu2 , f1 , f2 , f3 , f4 , which_Rin , which_Rout );
 
 
 
