@@ -41,7 +41,7 @@ architecture RTL of sync_ram is
    return ram_to_return;
    end function;
    
-   signal Ram : ram_type := init_ram("ram1.dat");
+   signal Ram : ram_type := init_ram("E:\projects_arch\ram1.dat");
   
 begin
 
