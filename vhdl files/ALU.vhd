@@ -8,7 +8,8 @@ entity ALU is
     port(
         clk:in std_logic;
         Operation:in std_logic_vector(21 downto 0);
-        A,Dstin :in std_logic_vector(16 downto 0);
+        A,DstOut :in std_logic_vector(16 downto 0);
+        OutSignal:out std_logic_vector(15 downto 0);
         F:out std_logic_vector(15 downto 0)
     );
 end ALU;
@@ -27,10 +28,6 @@ architecture ALU_arcitecture of ALU is
     -------------------------Falgs Register Signals----------------------
     signal UpdateFlags,OutFlag:std_logic_vector(16 downto 0);
     signal LoadFlags,ClearFlags:std_logic;
-
-    ------------------------Destination Register Signals-----------------
-    signal DstOut:std_logic_vector(16 downto 0);
-    signal ClearDst:std_logic;
 
     signal result:std_logic_vector(16 downto 0);
 
@@ -55,8 +52,7 @@ architecture ALU_arcitecture of ALU is
     end function CheckZero;
 begin
     FlagRegister:Register_entity port map(UpdateFlags,LoadFlags,ClearFlags,clk,OutFlag);
-    DstRegister:Register_entity port map(Dstin,load=>'1',clr=>ClearDst,clk=>clk,q=>DstOut);
-    process(clk,LoadFlags,ClearFlags,ClearDst,UpdateFlags,OutFlag,Operation,result)
+    process(clk,LoadFlags,ClearFlags,UpdateFlags,OutFlag,Operation,result)
     Variable Carry:std_logic:=OutFlag(0);
     Variable Zero:std_logic:=OutFlag(1);
     Variable Fvariable:std_logic_vector(15 downto 0):=result(15 downto 0);
@@ -158,6 +154,6 @@ begin
         UpdateFlags(4)<=Carry and Zero; --OF
         UpdateFlags(2)<=Fvariable(15);--SF
         UpdateFlags(5)<=CheckParity(Fvariable);--PF--(1:even,0:odd)
-        
+        OutSignal<=OutFlag(15 downto 0);
     end process;
 end ALU_arcitecture;
