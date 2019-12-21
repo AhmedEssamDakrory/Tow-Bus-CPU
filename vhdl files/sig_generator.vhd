@@ -58,6 +58,11 @@ BEGIN
   f5: mux GENERIC MAP (n=>3) PORT MAP(ir(8 downto 6) , temp);
   f6: mux GENERIC MAP (n=>3) PORT MAP(ir(2 downto 0) , temp2);
   
+  f7 : mux GENERIC MAP (n=>4) PORT MAP(IR(15 DOWNTO 12) , alu2_temp); -- 2operands
+  f8 : mux generic map(n=>5) PORT MAP(IR(10 DOWNTO 6) , alu1_temp); -- 1 operand
+    
+  alu2_temp(0) <= alu2_temp(0) or alu2_temp(13); -- nop A at mov and cmp
+    
   out1 <= temp_out1;
   in1 <= temp_in1;
   
@@ -85,15 +90,11 @@ BEGIN
    alu <= temp6 when temp8 = '1' else 
           "00000000";
     
-    go2 : if( (   (inst(18 downto 14) = "11001") or  (inst(18 downto 14) = "11101") )  and ((ir(15) or ir(14) or ir(13) or ir(12)) = '1') )generate
-      f7 : mux GENERIC MAP (n=>4) PORT MAP(IR(15 DOWNTO 12) , alu2_temp); -- 2operands
-      alu2_temp(0) <= alu2_temp(0) or alu2_temp(13);
-      alu2 <= alu2_temp; 
-    end generate go2;
-    go1 : if( (   (inst(18 downto 14) = "11001") or (inst(18 downto 14) = "11101" ))and ((ir(15) or ir(14) or ir(13) or ir(12)) = '0') )generate
-      f8 : mux generic map(n=>5) PORT MAP(IR(10 DOWNTO 6) , alu1_temp);
-      alu1 <= alu1_temp(10 downto 0);
-    end generate go1;
+   alu2 <= alu2_temp when  ((inst(18 downto 14) = "11001") or  (inst(18 downto 14) = "11101") )  and ((ir(15) or ir(14) or ir(13) or ir(12)) = '1') else
+          "0000000000000000";
+   
+   alu1 <= alu1_temp(10 downto 0) when ((inst(18 downto 14) = "11001") or (inst(18 downto 14) = "11101" ))and ((ir(15) or ir(14) or ir(13) or ir(12)) = '0') else
+          "00000000000";   
 
 END arch1;  
 
