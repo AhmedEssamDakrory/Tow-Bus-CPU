@@ -3,7 +3,7 @@ USE IEEE.std_logic_1164.all;
 ENTITY PLA IS
 	PORT( ir                    :    IN std_logic_vector (15 DOWNTO 0);
 	      na                    :    IN std_logic_vector (4 DOWNTO 0); -- next address
-	      flags                 :    IN std_logic_vector(1 Downto 0); -- flag register from alu 0-> zero flag and 1-> carry flag
+	      flags                 :    IN std_logic_vector(15 Downto 0); -- flag register from alu 0-> zero flag and 1-> carry flag
 	      F                     :    OUT std_logic_vector (4 DOWNTO 0)	); -- next address after branching
 END ENTITY PLA;
 
@@ -29,12 +29,12 @@ BEGIN
  
    ---  branch circuit
   br(0) <= reduction(ir( 15 downto 8 ) and "00001001");
-  br(1) <= reduction(ir( 15 downto 8 ) and "00001010") and flags(0);
-  br(2) <= reduction(ir( 15 downto 8) and "00001100") and (not flags(0));
-  br(3) <= reduction(ir( 15 downto 8) and "00001101") and (not flags(0));
-  br(4) <= reduction(ir( 15 downto 8) and "00001110") and ((not flags(0)) or flags(1));
-  br(5) <= reduction(ir( 15 downto 8) and "00001111") and flags(1);
-  br(6) <= reduction(ir( 15 downto 8) and "00001000") and (flags(0) or flags(1));
+  br(1) <= reduction(ir( 15 downto 8 ) and "00001010") and flags(1);
+  br(2) <= reduction(ir( 15 downto 8) and "00001100") and (not flags(1));
+  br(3) <= reduction(ir( 15 downto 8) and "00001101") and (not flags(1));
+  br(4) <= reduction(ir( 15 downto 8) and "00001110") and ((not flags(1)) or flags(0));
+  br(5) <= reduction(ir( 15 downto 8) and "00001111") and flags(0);
+  br(6) <= reduction(ir( 15 downto 8) and "00001000") and (flags(1) or flags(0));
   branch_stats <= br(0) or br(1) or br(2) or br(3) or br(4) or br(5) or br(6) ;
   
   process(ir , na)
