@@ -71,10 +71,10 @@ BEGIN
 		   f <= na or "00101";
 		  end if;
 		elsif( na = "11001") then -- @ address 25
-		   if( ir(3) = '0' or flag2 = '1')then -- apply operation
+		   if( ir(5 downto 3) = "000" or flag2 = '1')then -- apply operation
 				f <= na or ("00"& ir(3)& "00");
 		  else -- not direct dest
-			f <= na or "000"&ir(3)&'0';
+			f <= "11101";
 			flag2 := '1';
 		  end if;
 		else

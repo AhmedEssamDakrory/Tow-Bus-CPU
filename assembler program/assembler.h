@@ -369,7 +369,10 @@ public:
 	}
 
 	void Debug_print_codes(){
+		ofstream cout;
+		cout.open("ram1.dat");
 		for(auto x : codes) cout<<x.to_string()<<endl;
+		cout.close();
 	}
 
 };

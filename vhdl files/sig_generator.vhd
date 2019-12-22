@@ -61,7 +61,7 @@ BEGIN
   f7 : decoder GENERIC MAP (n=>4) PORT MAP(IR(15 DOWNTO 12) , alu2_temp_temp); -- 2operands
   f8 : decoder generic map(n=>5) PORT MAP(IR(10 DOWNTO 6) , alu1_temp); -- 1 operand
     
-  alu2_temp(0) <= alu2_temp_temp(0) or alu2_temp_temp(13); -- nop A at mov and cmp
+  alu2_temp <= '0' & alu2_temp_temp(15 downto 2) &(alu2_temp_temp(1) or alu2_temp_temp(13)); -- nop A at mov and cmp
     
   out1 <= temp_out1;
   in1 <= temp_in1;
@@ -91,11 +91,12 @@ BEGIN
           "00000000";
     
   -- 2 operations
-   alu2 <= alu2_temp when  ((inst(18 downto 14) = "11001") or  (inst(18 downto 14) = "11101") )  and ((ir(15) or ir(14) or ir(13) or ir(12)) = '1') else
+   alu2 <= alu2_temp when    ((mpc = "11001" ) or (mpc = "11101"))  and ((ir(15) or ir(14) or ir(13) or ir(12)) = '1') else
           "0000000000000000";
    -- 1 operation
-   alu1 <= alu1_temp(10 downto 0) when ((inst(18 downto 14) = "11001") or (inst(18 downto 14) = "11101" ))and ((ir(15) or ir(14) or ir(13) or ir(12)) = '0') else
+   alu1 <= alu1_temp(10 downto 0) when ( (mpc = "11001") or (mpc = "11101" ) )and ((ir(15) or ir(14) or ir(13) or ir(12)) = '0') else
           "00000000000";   
 
 END arch1;  
+
 

@@ -52,7 +52,7 @@ architecture ALU_arcitecture of ALU is
     end function CheckZero;
 begin
     FlagRegister:Register_entity port map(UpdateFlags,LoadFlags,ClearFlags,clk,OutFlag);
-    process(clk,LoadFlags,ClearFlags,UpdateFlags,OutFlag,Operation,result)
+    process(clk,LoadFlags,ClearFlags,UpdateFlags,OutFlag,Operation,result,A)
     Variable Carry:std_logic:=OutFlag(0);
     Variable Zero:std_logic:=OutFlag(1);
     Variable Fvariable:std_logic_vector(15 downto 0):=result(15 downto 0);
