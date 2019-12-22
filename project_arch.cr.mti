@@ -1,4 +1,22 @@
-{E:/Tow-Bus-CPU-master/vhdl files/Ram.vhd} {2 {vcom -work work -2002 -explicit {E:/Tow-Bus-CPU-master/vhdl files/Ram.vhd}
+{E:/Tow-Bus-CPU-master/vhdl files/Processor.vhd} {1 {vcom -work work -2002 -explicit {E:\Tow-Bus-CPU-master\vhdl files\Processor.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package std_logic_textio
+-- Compiling entity processor
+-- Compiling architecture arch of processor
+
+} {} {}} {E:/Tow-Bus-CPU-master/vhdl files/triState.vhd} {1 {vcom -work work -2002 -explicit {E:/Tow-Bus-CPU-master/vhdl files/triState.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity TRI_STATE
+-- Compiling architecture TS of TRI_STATE
+
+} {} {}} {E:/Tow-Bus-CPU-master/vhdl files/Ram.vhd} {2 {vcom -work work -2002 -explicit {E:/Tow-Bus-CPU-master/vhdl files/Ram.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
@@ -10,30 +28,6 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 ** Warning: E:/Tow-Bus-CPU-master/vhdl files/Ram.vhd(26): (vcom-1194) FILE declaration was written using VHDL 1987 syntax.
 
 
-} {} {}} {E:/Tow-Bus-CPU-master/vhdl files/triState.vhd} {1 {vcom -work work -2002 -explicit {E:/Tow-Bus-CPU-master/vhdl files/triState.vhd}
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity TRI_STATE
--- Compiling architecture TS of TRI_STATE
-
-} {} {}} {E:/Tow-Bus-CPU-master/vhdl files/PLA.vhd} {1 {vcom -work work -2002 -explicit {E:/Tow-Bus-CPU-master/vhdl files/PLA.vhd}
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity PLA
--- Compiling architecture arch1 of PLA
-
-} {} {}} {E:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd} {1 {vcom -work work -2002 -explicit {E:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd}
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
--- Compiling entity sig_generator
--- Compiling architecture arch1 of sig_generator
-
 } {} {}} {E:/Tow-Bus-CPU-master/vhdl files/Register.vhd} {1 {vcom -work work -2002 -explicit {E:/Tow-Bus-CPU-master/vhdl files/Register.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
@@ -43,6 +37,39 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STD_LOGIC_UNSIGNED
 -- Compiling entity Register_entity
 -- Compiling architecture arch_register of Register_entity
+
+} {} {}} {E:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd} {1 {vcom -work work -2002 -explicit {E:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity sig_generator
+-- Compiling architecture arch1 of sig_generator
+
+} {} {}} {E:/Tow-Bus-CPU-master/vhdl files/PLA.vhd} {1 {vcom -work work -2002 -explicit {E:/Tow-Bus-CPU-master/vhdl files/PLA.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity PLA
+-- Compiling architecture arch1 of PLA
+
+} {} {}} {E:/Tow-Bus-CPU-master/vhdl files/Rom.vhd} {1 {vcom -work work -2002 -explicit {E:\Tow-Bus-CPU-master\vhdl files\Rom.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity ROM
+-- Compiling architecture arch of ROM
+
+} {} {}} {E:/Tow-Bus-CPU-master/vhdl files/REG.vhd} {1 {vcom -work work -2002 -explicit {E:/Tow-Bus-CPU-master/vhdl files/REG.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity REG
+-- Compiling architecture A1 of REG
 
 } {} {}} {E:/Tow-Bus-CPU-master/vhdl files/decoder.vhd} {2 {vcom -work work -2002 -explicit {E:/Tow-Bus-CPU-master/vhdl files/decoder.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
@@ -55,21 +82,23 @@ Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 ** Warning: E:/Tow-Bus-CPU-master/vhdl files/decoder.vhd(17): (vcom-1073) Non-locally static choice (association #1, choice #1) is allowed only if it is the only choice of the only association.
 
 
-} {} {}} {E:/Tow-Bus-CPU-master/vhdl files/REG.vhd} {1 {vcom -work work -2002 -explicit {E:/Tow-Bus-CPU-master/vhdl files/REG.vhd}
+} {} {}} {E:/Tow-Bus-CPU-master/vhdl files/ALU.vhd} {2 {vcom -work work -2002 -explicit {E:/Tow-Bus-CPU-master/vhdl files/ALU.vhd}
 Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
 -- Loading package STANDARD
 -- Loading package TEXTIO
 -- Loading package std_logic_1164
--- Compiling entity REG
--- Compiling architecture A1 of REG
-
-} {} {}} {E:/Tow-Bus-CPU-master/vhdl files/Rom.vhd} {1 {vcom -work work -2002 -explicit {E:/Tow-Bus-CPU-master/vhdl files/Rom.vhd}
-Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
--- Loading package STANDARD
--- Loading package TEXTIO
--- Loading package std_logic_1164
+-- Loading package NUMERIC_BIT_UNSIGNED
 -- Loading package NUMERIC_STD
--- Compiling entity ROM
--- Compiling architecture arch of ROM
+-- Loading package std_logic_arith
+-- Loading package STD_LOGIC_UNSIGNED
+-- Loading package STD_LOGIC_SIGNED
+-- Compiling entity ALU
+-- Compiling architecture ALU_arcitecture of ALU
+** Warning: [9] E:/Tow-Bus-CPU-master/vhdl files/ALU.vhd(56): (vcom-1013) Initial value of "Carry" depends on value of signal "OutFlag".
+
+** Warning: [9] E:/Tow-Bus-CPU-master/vhdl files/ALU.vhd(57): (vcom-1013) Initial value of "Zero" depends on value of signal "OutFlag".
+
+** Warning: [9] E:/Tow-Bus-CPU-master/vhdl files/ALU.vhd(58): (vcom-1013) Initial value of "Fvariable" depends on value of signal "result".
+
 
 } {} {}}

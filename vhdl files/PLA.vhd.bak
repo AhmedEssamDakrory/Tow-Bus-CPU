@@ -74,9 +74,7 @@ BEGIN
       else -- not direct dest
         f <= na or "000"&ir(3)&'0';
         flag2 := '1';
-      end if;
-    else
-      f <= na; 
+      end if; 
   end if;
   end process;               
 END arch1;  
