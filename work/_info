@@ -1,32 +1,36 @@
 m255
 K3
+z0
+!s11e MIXED_VERSIONS
 13
 cModel Technology
 dE:\
 Ealu
-Z0 w1576921144
-Z1 DPx4 ieee 16 std_logic_signed 0 22 E>OLoMaBGQ?hbGgOoNXM^1
-Z2 DPx4 ieee 15 std_logic_arith 0 22 4`Y?g_lkdn;7UL9IiJck01
-Z3 DPx4 ieee 18 std_logic_unsigned 0 22 RYmj;=TK`k=k>D@Cz`zoB3
-Z4 DPx4 ieee 11 numeric_std 0 22 O3PF8EB`?j9=z7KT`fn941
-Z5 DPx4 ieee 20 numeric_bit_unsigned 0 22 kCB=mIJBCTn3SQ`:@@^T90
-Z6 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
-Z7 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
-Z8 dE:\Tow-Bus-CPU-master
-Z9 8E:/Tow-Bus-CPU-master/vhdl files/ALU.vhd
-Z10 FE:/Tow-Bus-CPU-master/vhdl files/ALU.vhd
+Z0 w1576930380
+Z1 DPx4 ieee 16 std_logic_signed 0 22 C<aanc0R`<LWPSe[JYRP^3
+Z2 DPx4 ieee 15 std_logic_arith 0 22 [G314=:2zXJ`VORJe1J@Z1
+Z3 DPx4 ieee 18 std_logic_unsigned 0 22 ;eZjO2D4ZDz<]0>8AL<ne1
+Z4 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z5 DPx4 ieee 20 numeric_bit_unsigned 0 22 fQPIgHhiDaHPI@GGmF4c92
+Z6 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z7 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+Z8 dC:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU
+Z9 8C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/ALU.vhd
+Z10 FC:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/ALU.vhd
 l0
 L7
-VDD]CPiV_NKbA^NHFUV;X=3
-Z11 OV;C;10.1d;51
+VlZl10E031PC46TIVI>47N2
+!s100 e42_DPk>10bAM;bF2BgKW1
+Z11 OV;C;2019.2;69
 32
-Z12 !s108 1576922588.639000
-Z13 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/ALU.vhd|
-Z14 !s107 E:/Tow-Bus-CPU-master/vhdl files/ALU.vhd|
-Z15 o-work work -2002 -explicit -O0
-Z16 tExplicit 1
-!s100 jPnEoKl6];YEUSM<z<kCS3
+Z12 !s110 1576931135
 !i10b 1
+Z13 !s108 1576931135.000000
+Z14 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/ALU.vhd|
+Z15 !s107 C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/ALU.vhd|
+!i113 1
+Z16 o-work work -2002 -explicit
+Z17 tExplicit 1 CvgOpt 0
 Aalu_arcitecture
 R1
 R2
@@ -35,308 +39,342 @@ R4
 R5
 R6
 R7
-DEx4 work 3 alu 0 22 DD]CPiV_NKbA^NHFUV;X=3
+DEx4 work 3 alu 0 22 lZl10E031PC46TIVI>47N2
 l56
 L15
-V>NH3_Zh5Gc0GV9GcFONjk2
+VlUhBDN;bGdFUZ?8hoakmF2
+!s100 MTm_<zZkgi?AH1FY[B_^@3
 R11
 32
 R12
+!i10b 1
 R13
 R14
 R15
+!i113 1
 R16
-!s100 J1mU4dQo2HKJKPgoB7Cgc0
-!i10b 1
+R17
 Edecoder
-Z17 w1576920743
+Z18 w1576927298
 R4
 R6
 R7
 R8
-Z18 8E:/Tow-Bus-CPU-master/vhdl files/decoder.vhd
-Z19 FE:/Tow-Bus-CPU-master/vhdl files/decoder.vhd
+Z19 8C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/decoder.vhd
+Z20 FC:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/decoder.vhd
 l0
 L5
-V6V_257o_W`Dj9[GQl]9[62
+VeVF]k3@AaN8CMhOU]i8@d0
+!s100 z7I`OGC7@m:hl[JA]H7@D3
 R11
 32
-Z20 !s108 1576922589.046000
-Z21 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/decoder.vhd|
-Z22 !s107 E:/Tow-Bus-CPU-master/vhdl files/decoder.vhd|
-R15
-R16
-!s100 S:ibGVQLkhH7oOFX?ch?P0
+R12
 !i10b 1
+R13
+Z21 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/decoder.vhd|
+Z22 !s107 C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/decoder.vhd|
+!i113 1
+R16
+R17
 Aarch1
 R4
 R6
 R7
-DEx4 work 7 decoder 0 22 6V_257o_W`Dj9[GQl]9[62
+DEx4 work 7 decoder 0 22 eVF]k3@AaN8CMhOU]i8@d0
 l14
 L13
-V>L]RPY1[eQoEUWGcVeH9[3
+V2@91JzFZUiUU;4PbIgOnZ3
+!s100 HF:9LBd<g1VAc4=zdh:Ym2
 R11
 32
-R20
+R12
+!i10b 1
+R13
 R21
 R22
-R15
+!i113 1
 R16
-!s100 Il3_mF@6cnHIeAMQ`Qz_61
-!i10b 1
-Epla
 R17
+Epla
+R18
 R6
 R7
 R8
-Z23 8E:/Tow-Bus-CPU-master/vhdl files/PLA.vhd
-Z24 FE:/Tow-Bus-CPU-master/vhdl files/PLA.vhd
+Z23 8C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/PLA.vhd
+Z24 FC:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/PLA.vhd
 l0
 L3
-VmdL<lKGeaQUh[2gRjn_A11
+VaiBC@=KjG2LN=ZI9l^_Ob1
+!s100 zz=j_629bS:UEglQfn7b93
 R11
 32
-Z25 !s108 1576922589.319000
-Z26 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/PLA.vhd|
-Z27 !s107 E:/Tow-Bus-CPU-master/vhdl files/PLA.vhd|
-R15
-R16
-!s100 1R`gDZ3i[@^8QIGMGGUnd1
+R12
 !i10b 1
+R13
+Z25 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/PLA.vhd|
+Z26 !s107 C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/PLA.vhd|
+!i113 1
+R16
+R17
 Aarch1
 R6
 R7
-DEx4 work 3 pla 0 22 mdL<lKGeaQUh[2gRjn_A11
+DEx4 work 3 pla 0 22 aiBC@=KjG2LN=ZI9l^_Ob1
 l28
 L11
-Vc;8352hK_<FWgl`5ck5`N3
+VK0[HbS]O>D9FR<5TNHnYR0
+!s100 QJk7hQKCcBT>dR6af7GL02
 R11
 32
+R12
+!i10b 1
+R13
 R25
 R26
-R27
-R15
+!i113 1
 R16
-!s100 N;3GBKcn>5CLUDe?SHOQ93
-!i10b 1
+R17
 Ereg
-Z28 w1576839972
+Z27 w1576851683
 R6
 R7
 R8
-Z29 8E:/Tow-Bus-CPU-master/vhdl files/REG.vhd
-Z30 FE:/Tow-Bus-CPU-master/vhdl files/REG.vhd
+Z28 8C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/REG.vhd
+Z29 FC:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/REG.vhd
 l0
 L4
-V<_6?jJIGn0W;1k<aMKQh53
+VdS8]LKUM?2XJ7TQ<jPT_B0
+!s100 i=4^oYHVncR?]CUkCeRUY1
 R11
 32
-Z31 !s108 1576922593.386000
-Z32 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/REG.vhd|
-Z33 !s107 E:/Tow-Bus-CPU-master/vhdl files/REG.vhd|
-R15
-R16
-!s100 >GQV^MOYFh6RA:k9_NdkB1
+Z30 !s110 1576931136
 !i10b 1
+R13
+Z31 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/REG.vhd|
+Z32 !s107 C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/REG.vhd|
+!i113 1
+R16
+R17
 Aa1
 R6
 R7
-DEx4 work 3 reg 0 22 <_6?jJIGn0W;1k<aMKQh53
+DEx4 work 3 reg 0 22 dS8]LKUM?2XJ7TQ<jPT_B0
 l12
 L11
-VdZ4P1lI>T^G1@<JU3Q8`L2
+V_1C9L:Obz4OgZ<lSO^aV=0
+!s100 i=ZBlfH5nRJA6:927V_hg3
 R11
 32
+R30
+!i10b 1
+R13
 R31
 R32
-R33
-R15
+!i113 1
 R16
-!s100 Mdm[K;PY_LJ:OD`CM2<:j1
-!i10b 1
+R17
 Eregister_entity
-Z34 w1576921144
+R0
 R3
 R2
 R6
 R7
 R8
-Z35 8E:/Tow-Bus-CPU-master/vhdl files/Register.vhd
-Z36 FE:/Tow-Bus-CPU-master/vhdl files/Register.vhd
+Z33 8C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/Register.vhd
+Z34 FC:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/Register.vhd
 l0
 L5
-VkTAg?c05hM@kU6k82W1BW2
+Ve?ZRS;61kFH1fAUnaQAV02
+!s100 3bL=?P9m>O>6S@R5GmbiH0
 R11
 32
-Z37 !s108 1576922593.674000
-Z38 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/Register.vhd|
-Z39 !s107 E:/Tow-Bus-CPU-master/vhdl files/Register.vhd|
-R15
-R16
-!s100 4A8C6jQ`X7=_YB66KG;8<0
+R30
 !i10b 1
+Z35 !s108 1576931136.000000
+Z36 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/Register.vhd|
+Z37 !s107 C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/Register.vhd|
+!i113 1
+R16
+R17
 Aarch_register
 R3
 R2
 R6
 R7
-DEx4 work 15 register_entity 0 22 kTAg?c05hM@kU6k82W1BW2
+DEx4 work 15 register_entity 0 22 e?ZRS;61kFH1fAUnaQAV02
 l16
 L14
-V=1KT?mOcK1i]RV7BcP1393
+V`VjI8cz7i^igjOHTTGd2R3
+!s100 `m?o59e^YGBhN5?[DVXP21
 R11
 32
-R37
-R38
-R39
-R15
-R16
-!s100 TfAn8DMFg4jS[]dT<KPR03
+R30
 !i10b 1
-Erom
+R35
+R36
+R37
+!i113 1
+R16
 R17
+Erom
+Z38 w1576859118
 R4
 R6
 R7
 R8
-Z40 8E:/Tow-Bus-CPU-master/vhdl files/Rom.vhd
-Z41 FE:/Tow-Bus-CPU-master/vhdl files/Rom.vhd
+Z39 8C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/Rom.vhd
+Z40 FC:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/Rom.vhd
 l0
 L5
-V?K2V^XYgYkeV5:c97^RE`1
+V?;lRdYl8;=bDY]n^hzmE;2
+!s100 F@bBWKMVfRf4KzgNB6>QO3
 R11
 32
-Z42 !s108 1576922593.987000
-Z43 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/Rom.vhd|
-Z44 !s107 E:/Tow-Bus-CPU-master/vhdl files/Rom.vhd|
-R15
-R16
-!s100 X5gmf[d8;@gl[J2HHgNi83
+R30
 !i10b 1
+R35
+Z41 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/Rom.vhd|
+Z42 !s107 C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/Rom.vhd|
+!i113 1
+R16
+R17
 Aarch
 R4
 R6
 R7
-DEx4 work 3 rom 0 22 ?K2V^XYgYkeV5:c97^RE`1
+DEx4 work 3 rom 0 22 ?;lRdYl8;=bDY]n^hzmE;2
 l56
 L18
-VXQS`WB4A_OTHVb3S1jTLh2
+VTPkdSED[[YQIBY79135>O1
+!s100 aV79QB:6i698XlV0oU5ka3
 R11
 32
-R42
-R43
-R44
-R15
-R16
-!s100 ]W1mHn5<XOMA:G;[J_XV61
+R30
 !i10b 1
-Esig_generator
+R35
+R41
+R42
+!i113 1
+R16
 R17
+Esig_generator
+R18
 R6
 R7
 R8
-Z45 8E:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd
-Z46 FE:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd
+Z43 8C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/sig_generator.vhd
+Z44 FC:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/sig_generator.vhd
 l0
 L3
-VJhlN_RI@`7=36Sf<5]V_;3
+V=8`g5;57^;`01bAG^1jEk0
+!s100 jgzGPiUIR@ZYhVNClWehP0
 R11
 32
-Z47 !s108 1576922594.381000
-Z48 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd|
-Z49 !s107 E:/Tow-Bus-CPU-master/vhdl files/sig_generator.vhd|
-R15
-R16
-!s100 W9?nnDfZGPC>=mj`8Bch[0
+R30
 !i10b 1
+R35
+Z45 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/sig_generator.vhd|
+Z46 !s107 C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/sig_generator.vhd|
+!i113 1
+R16
+R17
 Aarch1
 R6
 R7
-DEx4 work 13 sig_generator 0 22 JhlN_RI@`7=36Sf<5]V_;3
+DEx4 work 13 sig_generator 0 22 =8`g5;57^;`01bAG^1jEk0
 l51
 L22
-VgiF`kONYB=?_>oj6CnfBY1
+V?kUg5zCQVKD;;m1@QQ=Ig0
+!s100 ibfLVz5N`@kUzfA5R42II2
 R11
 32
-R47
-R48
-R49
-R15
-R16
-!s100 Ph`fAB3cQ?K`@]Rj?;G?N1
+R30
 !i10b 1
+R35
+R45
+R46
+!i113 1
+R16
+R17
 Esync_ram
-Z50 w1576922623
-Z51 DPx4 ieee 16 std_logic_textio 0 22 ?Il0a149GV276[?[UMDWh2
+R0
+Z47 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
 R4
 R6
 R7
 R8
-Z52 8E:/Tow-Bus-CPU-master/vhdl files/Ram.vhd
-Z53 FE:/Tow-Bus-CPU-master/vhdl files/Ram.vhd
+Z48 8C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/Ram.vhd
+Z49 FC:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/Ram.vhd
 l0
 L15
-VPkbFk^l<F[P7MdN^i2hJ?3
-!s100 P_5LH6]nm`i9:WYAi1hl@0
+VoaIUT:YEGQP4R[ZSk?^iz1
+!s100 831Vk?J2l2j51`DZ3`O6I1
 R11
 32
+R12
 !i10b 1
-Z54 !s108 1576922629.395000
-Z55 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/Ram.vhd|
-Z56 !s107 E:/Tow-Bus-CPU-master/vhdl files/Ram.vhd|
-R15
+R13
+Z50 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/Ram.vhd|
+Z51 !s107 C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/Ram.vhd|
+!i113 1
 R16
+R17
 Artl
-R51
+R47
 R4
 R6
 R7
-Z57 DEx4 work 8 sync_ram 0 22 PkbFk^l<F[P7MdN^i2hJ?3
+DEx4 work 8 sync_ram 0 22 oaIUT:YEGQP4R[ZSk?^iz1
 l46
 L25
-Vh7j2NeiWinGbaYBLf_3le3
-!s100 9S;iSGYSb0@Mhh[h9K[`Y2
+VY<T;jH^UER?e3A;K4^KUn1
+!s100 @YJBZ46m;zaiMKCh4g2zI0
 R11
 32
+R12
 !i10b 1
-R54
-R55
-R56
-R15
+R13
+R50
+R51
+!i113 1
 R16
+R17
 Etri_state
-Z58 w1576840077
+R27
 R6
 R7
 R8
-Z59 8E:/Tow-Bus-CPU-master/vhdl files/triState.vhd
-Z60 FE:/Tow-Bus-CPU-master/vhdl files/triState.vhd
+Z52 8C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/triState.vhd
+Z53 FC:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/triState.vhd
 l0
 L4
-VNBTK9RBLC7F]5=ccH0YY11
+V8eAFGDhT=;fTkz:1bMDZD2
+!s100 ja0iMP1NUBJP3DENe>ZBP0
 R11
 32
-Z61 !s108 1576922594.650000
-Z62 !s90 -reportprogress|300|-work|work|-2002|-explicit|E:/Tow-Bus-CPU-master/vhdl files/triState.vhd|
-Z63 !s107 E:/Tow-Bus-CPU-master/vhdl files/triState.vhd|
-R15
-R16
-!s100 bXYR?H07dgNV71==PUnTN0
+R30
 !i10b 1
+R35
+Z54 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/triState.vhd|
+Z55 !s107 C:/Users/Mahmoud Sebak/OneDrive/Desktop/Projects/Architecture/Tow-Bus-CPU/vhdl files/triState.vhd|
+!i113 1
+R16
+R17
 Ats
 R6
 R7
-DEx4 work 9 tri_state 0 22 NBTK9RBLC7F]5=ccH0YY11
+Z56 DEx4 work 9 tri_state 0 22 8eAFGDhT=;fTkz:1bMDZD2
 l12
 L11
-VPG4V6C[FmCZ_UA;2Dmj@o3
+Z57 VXd83=9YNIgLH2L[j4HMb82
+Z58 !s100 DRzbJC<RX6YQ;gMg;`OBJ2
 R11
 32
-R61
-R62
-R63
-R15
-R16
-!s100 V37OfOPK6AO6XAF?imVlQ3
+R30
 !i10b 1
+R35
+R54
+R55
+!i113 1
+R16
+R17

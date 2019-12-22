@@ -21,7 +21,7 @@ architecture arch of ROM is
     
     signal ROM : rom_type := (
                             "0000000000000000000", -- 0 not used
-                            "0000000010001000101", -- 1 f=a+1,pcin,mdrout,irin,zout*
+                            "0000011010000100101", -- 1 pcin,mdrout,irin,zout
                             "0000000000000000000", -- 2 not used
                             "1000010010010111111", -- 3 mdrout,srcin-a
                             "0001100100001000010", -- 4 rsrcout,f=a+b,marin-b,rd,zout*
@@ -51,7 +51,7 @@ architecture arch of ROM is
                             "1100101110000110011", -- 28 zout,rdstin,mdrout,dstin
                             "1111110101101001011", -- 29 srcout,mdrin,wrt,zout*
                             "1100101110001110011", -- 30 mdrout,dstin,rdstin,marout
-                            "0000101101010000011"  -- 31 pcout,marin-a,rd,dstin
+                            "0000100001010000000"  -- 31 pcout,marin-a,rd,zin,f=a+1
         );
 begin
 	process(clk)
