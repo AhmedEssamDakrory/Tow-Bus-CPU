@@ -21,6 +21,11 @@ component REG IS
 			Resetn, Clock, Load	: IN 		STD_LOGIC ;
 			Q	: OUT 	STD_LOGIC_VECTOR(N-1 DOWNTO 0) ) ;
 end component ;
+component FlipFlop IS
+	PORT ( 	D			: IN 		STD_LOGIC ;
+			Resetn, Clock, Load	: IN 		STD_LOGIC ;
+			Q	: OUT 	STD_LOGIC ) ;
+end component;
 component Register_entity IS
  PORT(
     d   : IN STD_LOGIC_VECTOR(16 DOWNTO 0);
@@ -98,9 +103,9 @@ component PLA IS
 END component;
 
 --data
-signal R0,R1,R2,R3,R4,R5,R6,R7,MDR,MAR,DST,SRC,Z,IR,flags , bus_a_or_b1,bus_a_or_b2,F,address_Field_Of_IR, from_ram, bus_b_or_ram : std_logic_vector(15 downto 0);
+signal R0,R1,R2,R3,R4,R5,R6,R7,MDR,MAR,DST,SRC,Z,IR,flags , bus_a_or_b1,bus_a_or_b2,F,address_Field_Of_IR, from_ram, bus_b_or_ram , from_Ram_Or_IR : std_logic_vector(15 downto 0);
 --f0
-signal MDRin,DSTin,SRCin_a,INC_A,DEC_A,ADD_AB  : std_logic;
+signal MDRin,DSTin,SRCin_a,INC_A,DEC_A,ADD_AB,clk_invert  : std_logic;
 --f1
 signal R0out,R1out,R2out,R3out,R4out,R5out,R6out,R7out,MDRout,SRCout : std_logic;
 --f2
@@ -108,7 +113,7 @@ signal IRout,Zout,Zout1,MARout,MARin_A : std_logic;
 --f3
 signal R0in,R7in,R1in,R2in,R3in,R4in,R5in,R6in,SRCin_b,flag,RD,WR : std_logic;
 --f4
-signal Zin,IRin,MARin_B,SRCin_a_or_b,MARin_A_or_B, MDRin_or_RD : std_logic;
+signal Zin,IRin,MARin_B,SRCin_a_or_b,MARin_A_or_B, MDRin_or_RD ,Q: std_logic;
 signal operation :std_logic_vector(21 downto 0);
 
 --groups
@@ -132,23 +137,14 @@ SRCin_a <= f0(4);
 MDRin <= f0(5);
 --group1-----------------------------------------------------
 --which Rxout
-R0out <= f1(0) and which_Rout(0);
-R1out <= f1(0) and which_Rout(1);
-R2out <= f1(0) and which_Rout(2);
-R3out <= f1(0) and which_Rout(3);
-R4out <= f1(0) and which_Rout(4);
-R5out <= f1(0) and which_Rout(5);
-R6out <= f1(0) and which_Rout(6);
-R7out <= (f1(0) and which_Rout(7)) or f1(2);
-
-R0out <= f1(1) and which_Rout(0);
-R1out <= f1(1) and which_Rout(1);
-R2out <= f1(1) and which_Rout(2);
-R3out <= f1(1) and which_Rout(3);
-R4out <= f1(1) and which_Rout(4);
-R5out <= f1(1) and which_Rout(5);
-R6out <= f1(1) and which_Rout(6);
-R7out <= (f1(1) and which_Rout(7)) or f1(2);
+R0out <= (f1(0) or f1(1)) and which_Rout(0);
+R1out <= (f1(0) or f1(1)) and which_Rout(1);
+R2out <= (f1(0) or f1(1)) and which_Rout(2);
+R3out <= (f1(0) or f1(1)) and which_Rout(3);
+R4out <= (f1(0) or f1(1)) and which_Rout(4);
+R5out <= (f1(0) or f1(1)) and which_Rout(5);
+R6out <= (f1(0) or f1(1)) and which_Rout(6);
+R7out <= ((f1(0) or f1(1)) and which_Rout(7)) or f1(2);
 --pcout?!1
 
 SRCout <= f1(3);
@@ -165,23 +161,15 @@ MARin_A <= f2(4);
 RD <= f3(0);
 WR <= f3(2);
 --which Rxin
-R0in <= f3(3) and which_Rin(0);
-R1in <= f3(3) and which_Rin(1);
-R2in <= f3(3) and which_Rin(2);
-R3in <= f3(3) and which_Rin(3);
-R4in <= f3(3) and which_Rin(4);
-R5in <= f3(3) and which_Rin(5);
-R6in <= f3(3) and which_Rin(6);
-R7in <= (f3(3) and which_Rin(7)) or f3(1);
+R0in <= (f3(3) or f3(4)) and which_Rin(0);
+R1in <= (f3(3) or f3(4)) and which_Rin(1);
+R2in <= (f3(3) or f3(4)) and which_Rin(2);
+R3in <= (f3(3) or f3(4)) and which_Rin(3);
+R4in <= (f3(3) or f3(4)) and which_Rin(4);
+R5in <= (f3(3) or f3(4)) and which_Rin(5);
+R6in <= (f3(3) or f3(4)) and which_Rin(6);
+R7in <= ((f3(3) or f3(4)) and which_Rin(7)) or f3(1);
 
-R0in <= f3(4) and which_Rin(0);
-R1in <= f3(4) and which_Rin(1);
-R2in <= f3(4) and which_Rin(2);
-R3in <= f3(4) and which_Rin(3);
-R4in <= f3(4) and which_Rin(4);
-R5in <= f3(4) and which_Rin(5);
-R6in <= f3(4) and which_Rin(6);
-R7in <= (f3(4) and which_Rin(7)) or f3(1);
 
 SRCin_b <= f3(5);
 flag <= f3(6);
@@ -197,8 +185,11 @@ Ram_1 : sync_ram port map(clk , WR , MAR , MDR, from_ram);
 fetch_Micro_instruction: ROM port map(MPC , MicroI_data , clk);
 MPC_ROM <= MicroI_data(18 downto 14);
 
-fetch_next_address: PLA port map(IR,clk , MPC_ROM ,flags , tmp);
-
+from_Ram_Or_IR <= MDR when IRin = '1'
+else IR;
+fetch_next_address: PLA port map(from_Ram_Or_IR,clk , MPC_ROM ,flags , tmp);
+clk_invert <= not clk;
+Read_SIG: FlipFlop port map (RD,reset,clk_invert,'1',Q);
 R_0: REG port map(busb,reset,clk,R0in,R0);
 R_1: REG port map(busb,reset,clk,R1in,R1);
 R_2: REG port map(busb,reset,clk,R2in,R2);
@@ -207,7 +198,8 @@ R_4: REG port map(busb,reset,clk,R4in,R4);
 R_5: REG port map(busb,reset,clk,R5in,R5);
 R_6: REG port map(busb,reset,clk,R6in,R6);
 R_7: REG port map(busb,reset,clk,R7in,R7);
-IR_1: REG port map(busa , reset , clk , IRin , IR );
+
+IR_1: REG port map(busa , reset , clk, IRin , IR );------invert
 DST_1: REG port map(busa , reset , clk , DSTin , DST );
 Z_1 : REG port map(F ,reset , clk , Zin , Z);
 bus_a_or_b1 <= busa when SRCin_a = '1'
@@ -222,7 +214,7 @@ else busb;
 MARin_A_or_B <= MARin_A or MARin_B;
 MAR_1: REG port map(bus_a_or_b2 , reset , clk , MARin_A_or_B, MAR );
 
-MDRin_or_RD <= MDRin or RD;
+MDRin_or_RD <= MDRin or RD or Q;
 bus_b_or_ram <= busb when MDRin = '1'
 else from_ram;
 MDR_1 : REG port map( bus_b_or_ram, reset , clk , MDRin_or_RD , MDR );
@@ -244,17 +236,11 @@ TRI_STATE_Zout: TRI_STATE port map(Zout , Z , busb);
 TRI_STATE_Zout1: TRI_STATE port map(Zout1 , F , busb);
 
 operation <= alu1(10 downto 0) & alu2(7 downto 0) & f0(2 downto 0);
-sig_generator_1 : sig_generator port map(MicroI_data , IR , MPC , f0 , alu1 , alu2 , f1 , f2 , f3 , f4 , which_Rin , which_Rout );
+sig_generator_1 : sig_generator port map(MicroI_data , IR , MPC , f0 , alu1 , alu2 , f1 , f2 , f3 , f4 , which_Rout , which_Rin );
 con1 <= '0' & busa;
 con2 <= '0' & DST;
 ALU_1:ALU port map(clk,operation,con1,con2,flags,F);
 
-
-process(clk)
-begin 
-	if( clk'event and clk = '1' ) then
-		MPC <= tmp;
-	end if ;
-end process ;
+MPC <= tmp;
 
 end arch;

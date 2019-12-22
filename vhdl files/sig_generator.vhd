@@ -55,8 +55,8 @@ BEGIN
   f3: decoder GENERIC MAP (n=>3) PORT MAP(inst(4 DOWNTO 2) , temp_in1);
   f4: decoder GENERIC MAP (n=>2) PORT MAP(inst(1 DOWNTO 0) , in2);
   
-  f5: decoder GENERIC MAP (n=>3) PORT MAP(ir(8 downto 6) , r_dest);
-  f6: decoder GENERIC MAP (n=>3) PORT MAP(ir(2 downto 0) , r_src);
+  f5: decoder GENERIC MAP (n=>3) PORT MAP(ir(2 downto 0) , r_dest);-------edited
+  f6: decoder GENERIC MAP (n=>3) PORT MAP(ir(8 downto 6) , r_src);
   
   f7 : decoder GENERIC MAP (n=>4) PORT MAP(IR(15 DOWNTO 12) , alu2_temp_temp); -- 2operands
   f8 : decoder generic map(n=>5) PORT MAP(IR(10 DOWNTO 6) , alu1_temp); -- 1 operand

@@ -43,7 +43,7 @@ BEGIN
     variable f1,f2,x,y,indir: std_logic ;
     variable temp : std_logic_vector(2 downto 0);
     begin
-	if rising_edge(clk)then
+	if falling_edge(clk)then
 		-- @ address 0
 		if( na = "00000") then
 		   flag := '0';

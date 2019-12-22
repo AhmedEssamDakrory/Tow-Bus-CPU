@@ -14,10 +14,33 @@ BEGIN
 	BEGIN
 		IF (Resetn = '0') THEN
 			Q <= (OTHERS => '0') ;
-		ELSIF (RISING_EDGE(CLOCK)) THEN
+		ELSIF (FALLING_EDGE(CLOCK)) THEN
 		  IF (Load ='1') THEN    
 			     Q <= D ;
 			END IF;
 		END IF ;
 	END PROCESS ;
 END A1 ;
+
+LIBRARY ieee ;
+USE ieee.std_logic_1164.all ;
+
+ENTITY FlipFlop IS
+	PORT ( 	D			: IN 		STD_LOGIC ;
+			Resetn, Clock, Load	: IN 		STD_LOGIC ;
+			Q	: OUT 	STD_LOGIC ) ;
+END FlipFlop;
+
+ARCHITECTURE A2 OF FlipFlop IS	
+BEGIN
+	PROCESS ( Resetn, Clock )
+	BEGIN
+		IF (Resetn = '0') THEN
+			Q <= '0' ;
+		ELSIF (FALLING_EDGE(CLOCK)) THEN
+		  IF (Load ='1') THEN    
+			     Q <= D ;
+			END IF;
+		END IF ;
+	END PROCESS ;
+END A2 ;
