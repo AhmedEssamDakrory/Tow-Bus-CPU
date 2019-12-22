@@ -40,13 +40,13 @@ architecture arch of ROM is
                             "1101011000110000011", -- 17 rdstout,marin-a,rd
                             "1110000000110000000", -- 18 rdstout,marin-a,rd,f=a+1,zin
                             "1100101110010111111", -- 19 mdrout,dstin
-                            "1010101000101000010", -- 20 rdstout,marin-b,rd,f=a-1,zout*
+                            "1111001000101000010", -- 20 rdstout,marin-b,rd,f=a-1,zout* ----edited
                             "0111111010010000011", -- 21 mdrout,marin-a,rd
                             "0011000001010000000", -- 22 pcout,marin-a,rd,f=a+1,zin
                             "1111100101101000111", -- 23 pcin,f=a+b,zout*,srcout
                             "1011101101000010111", -- 24 pcout,dstin,irout,srcin-b
                             "1111111001101010011", -- 25 srcout,rdstin,zout*
-                            "1100101110010111011", -- 26 mdrout,dstin,flag
+                            "1110101110010111011", -- 26 mdrout,dstin,flag -----edited 
                             "1101011010010000011", -- 27 mdrout,marin-a,rd
                             "1100101110000110011", -- 28 zout,rdstin,mdrout,dstin
                             "1111110101101001011", -- 29 srcout,mdrin,wrt,zout*

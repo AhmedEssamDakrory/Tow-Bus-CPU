@@ -62,7 +62,7 @@ BEGIN
 		   F <= x & y & temp ;
 		elsif( na = "10000") then -- @ address 16
 		  -- fetch dest
-		  if(ir(9) = '0' or flag = '1') then
+		  if(ir(11 downto 9) = "001" or ir(9) = '0' or flag = '1') then
 				indir :=  (not ir(5)) and (not ir(4)) and ir(3);
 			  f <= na or ("00" & ir(5 downto 4) & indir);
 		  -- not direct src
@@ -71,10 +71,14 @@ BEGIN
 		   f <= na or "00101";
 		  end if;
 		elsif( na = "11001") then -- @ address 25
-		   if( ir(5 downto 3) = "000" or flag2 = '1')then -- apply operation
-				f <= na or ("00"& ir(3)& "00");
+		   if( ir(3) = '0' or flag2 = '1')then -- apply operation
+				if( ir(5 downto 3) = "000") then
+					f <= na or ("00"& ir(3)& "00");
+				else
+					f <= "11101";
+					end if;
 		  else -- not direct dest
-			f <= "11101";
+			f <= "11011";
 			flag2 := '1';
 		  end if;
 		else

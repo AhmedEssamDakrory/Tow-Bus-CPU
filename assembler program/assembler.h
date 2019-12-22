@@ -83,7 +83,7 @@ class Assembler{
 		// fetching operation
 		while(s[i] == ' ') ++i;
 		string op="";
-		while(s[i] != ' ') op += tolower(s[i++]);
+		while(s[i] != ' ' && s[i] != '\n') op += tolower(s[i++]);
 		return op;
 	}
 
@@ -212,9 +212,31 @@ public:
 			address++;
 			int i =0;
 			string op = fetchOperation(s,i);
+			//check if NOP
+			if(op == "nop"){
+				continue;
+			}
+			//check if hlt
+			if(op == "hlt"){
+				Operand opp;
+				instr.push_back({op,{opp,opp}});
+				continue;
+			}
 			//check if variable
 			if(op[0] == '#'){
-				bitset<16> b = toBinary(stoi(&op[1]));
+				int j = 1;
+				while(op[j] == ' ') ++j;
+				bool neg = false;
+				if(op[j] == '-') neg = true , j++;
+				bitset<16> b = toBinary(stoi(&op[j]));
+				//two's complement if offset is negative........................
+				bool first_one=false; 
+				for(int i = 0 ; i <= 15 && neg; i++ ){
+					if(first_one){
+						b[i] = !b[i];
+					}
+					if(b[i]) first_one = true;
+				}
 				Operand opp;
 				opp.isValue = true;
 				opp.indexed_value = b;
@@ -227,9 +249,20 @@ public:
 			if(op_type == BR_OPERAND){
 				while(s[i] == ' ') ++i;
 				string offset = "";
+				bool neg = false;
+				if(s[i] == '-') neg = true , i++;
 				while(i < (int) s.size()) offset += s[i++];
 				int offset_ = stoi(offset);
 				bitset<16> b = toBinary(offset_);
+				//two's complement if offset is negative........................
+				bool first_one=false; 
+				for(int i = 0 ; i <= 7 && neg; i++ ){
+					if(first_one){
+						b[i] = !b[i];
+					}
+					if(b[i]) first_one = true;
+				}
+
 				Operand operand1;
 				for(int i = 0 ; i <= 7 ; ++i)
 					operand1.offset[i] = b[i];
@@ -255,14 +288,14 @@ public:
 			if(operand1.absolute){
 				Operand opp;
 				opp.isValue = true;
-				opp.indexed_value = toBinary((operand1.indexed_value).to_ulong()-(address+2));
+				opp.indexed_value = toBinary((operand1.indexed_value).to_ulong()-(address+1));
 				instr.push_back({"" , {opp , opp}});
 				address++;
 			}
 			if(operand2.absolute){
 				Operand opp;
 				opp.isValue = true;
-				opp.indexed_value = toBinary((operand2.indexed_value).to_ulong()-(address+2));
+				opp.indexed_value = toBinary((operand2.indexed_value).to_ulong()-(address+1));
 				instr.push_back({"" , {opp , opp}});
 				address++;
 			}
@@ -312,7 +345,15 @@ public:
 				codes.push_back(instruction.second.first.indexed_value);
 				continue;
 			}
+
 			string op = instruction.first;
+			
+			// handling hlt
+			if(op == "hlt"){
+				code[15]=1; code[14] =1; code[13] =1; code[12] = 1;
+				codes.push_back(code);
+				continue;
+			}
 			int op_type = operationType(op);
 			if(op_type == OPERAND_2){
 				bitset<4> b = encode_2_operand(op);

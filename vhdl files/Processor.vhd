@@ -3,6 +3,7 @@ use IEEE.STD_LOGIC_1164.all;
 use IEEE.Numeric_Std.all;
 use ieee.std_logic_textio.all;
 use std.textio.all;
+use std.env.stop;
 
 entity processor is
     generic(
@@ -105,7 +106,7 @@ END component;
 --data
 signal R0,R1,R2,R3,R4,R5,R6,R7,MDR,MAR,DST,SRC,Z,IR,flags , bus_a_or_b1,bus_a_or_b2,F,address_Field_Of_IR, from_ram, bus_b_or_ram , from_Ram_Or_IR : std_logic_vector(15 downto 0);
 --f0
-signal MDRin,DSTin,SRCin_a,INC_A,DEC_A,ADD_AB,clk_invert  : std_logic;
+signal MDRin,DSTin,SRCin_a,INC_A,DEC_A,ADD_AB,clk_invert,interupt  : std_logic;
 --f1
 signal R0out,R1out,R2out,R3out,R4out,R5out,R6out,R7out,MDRout,SRCout : std_logic;
 --f2
@@ -246,4 +247,10 @@ ALU_1:ALU port map(clk,operation,con1,con2,flags,F);
 
 MPC <= tmp;
 
+process (ir)
+  begin
+	if(ir(15 downto 12) = "1111") then  --hlt
+		stop;
+    end if;
+end process;
 end arch;

@@ -1,0 +1,13 @@
+#0
+mov #40 , r0
+mov #20 , @r0
+mov #255 , @(r0)+
+cmp #255 , @-(r0)
+beq 3
+inc r0
+inc r0
+inc r0
+inv r0
+inc r0
+br -5 
+

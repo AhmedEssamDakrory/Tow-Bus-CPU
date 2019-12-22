@@ -1,1 +1,13 @@
-kakm
+#0
+mov #1 , r0
+mov #1, r1
+mov @r1,r4
+mov @r4,r5
+add r1,@r4
+add x(r5),r6
+2
+br 3
+inc r0
+dec r0
+rol r0
+clr r0
