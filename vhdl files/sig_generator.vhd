@@ -5,7 +5,6 @@ ENTITY sig_generator IS
 	      inst                  :   IN std_logic_vector (18 DOWNTO 0);
  	      ir                    :   IN std_logic_vector(15 DOWNTO 0 );
  	      MPC                   :   IN std_logic_vector(4 DOWNTO 0);
- 	      
 	     	alu                    :   out std_logic_vector(7 DOWNTO 0);	--f0	0 2
 	     	alu1                  :   out std_logic_vector (10 DOWNTO 0);	-- 0 10
 	     	alu2                  :   out std_logic_vector(15 DOWNTO 0);	-- 0 8

@@ -249,6 +249,12 @@ con1 <= '0' & busa;
 con2 <= '0' & DST;
 ALU_1:ALU port map(clk,operation,con1,con2,flags,F);
 
-MPC <= tmp;
+
+process(clk)
+begin 
+	if( clk'event and clk = '1' ) then
+		MPC <= tmp;
+	end if ;
+end process ;
 
 end arch;
