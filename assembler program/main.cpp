@@ -15,8 +15,11 @@ const int inf = (int) 1e9;
 
 int main()
 {
-	Assembler a("file.txt");
+	cout<<"input file name.....\n";
+	string s; cin>>s;
+	Assembler a(s);
 	a.encode();
 	a.Debug_print_codes();
+	a.Debug_print_instr();
 
 }

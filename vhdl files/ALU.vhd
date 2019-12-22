@@ -7,7 +7,7 @@ use IEEE.std_logic_signed.all;
 entity ALU is
     port(
         clk:in std_logic;
-        Operation:in std_logic_vector(21 downto 0);
+        Operation:in std_logic_vector(34 downto 0);
         A,DstOut :in std_logic_vector(16 downto 0);
         OutSignal:out std_logic_vector(15 downto 0);
         F:out std_logic_vector(15 downto 0)
@@ -61,7 +61,7 @@ begin
             result<= std_logic_vector(signed(A)+1);
             F<=result(15 downto 0);
             UpdateFlags(0)<=result(16);
-        elsif Operation(1)='1' or Operation(4)='1' then--A+B
+        elsif Operation(1)='1' or Operation(5)='1' then--A+B
             result<=std_logic_vector(signed(A)+signed(DstOut));
             F<=result(15 downto 0);
             UpdateFlags(0)<=result(16);
@@ -69,77 +69,77 @@ begin
             result<=std_logic_vector(signed(A)-1);
             F<=result(15 downto 0);
             UpdateFlags(0)<=result(16);
-        elsif Operation(3)='1' then--Nop A
+        elsif Operation(4)='1'   then--Nop A
             result<=A;
             F<=result(15 downto 0);
             UpdateFlags(0)<=OutFlag(0);
-        elsif Operation(5)='1' then--A+B+Carry
+        elsif Operation(7)='1' then--A+B+Carry
             result<=std_logic_vector(signed(A)+signed(DstOut)+signed(std_logic_vector(to_unsigned(0, 15))&std_logic(OutFlag(0))));
             F<=result(15 downto 0);
             UpdateFlags(0)<=result(16);
-        elsif Operation(6)='1' then--B-A
+        elsif Operation(11)='1' or Operation(17)='1' then--B-A
             result<=std_logic_vector(signed(DstOut)-signed(A));
             F<=result(15 downto 0);
             UpdateFlags(0)<=result(16);
-        elsif Operation(7)='1' then--B-A-Carry
+        elsif Operation(12)='1' then--B-A-Carry
             result<=std_logic_vector(signed(DstOut)-signed(A)-signed(std_logic_vector(to_unsigned(0, 15))&std_logic(OutFlag(0))));
             F<=result(15 downto 0);
             UpdateFlags(0)<=result(16);
-        elsif Operation(8)='1' then--A and b
+        elsif Operation(13)='1' then--A and b
             result<=A and DstOut;
             F<=result(15 downto 0);
             UpdateFlags(0)<=OutFlag(0);
-        elsif Operation(9)='1' then--A or B
+        elsif Operation(15)='1' then--A or B
             result<=A or DstOut;
             F<=result(15 downto 0);
             UpdateFlags(0)<=OutFlag(0);
-        elsif Operation(10)='1' then--A xnor B
+        elsif Operation(16)='1' then--A xnor B
             result<=A xnor DstOut;
             F<=result(15 downto 0);
             UpdateFlags(0)<=OutFlag(0);
-        elsif Operation(11)='1' then--B+1
+        elsif Operation(20)='1' then--B+1
             result<=std_logic_vector(signed(DstOut)+1);
             F<=result(15 downto 0);
             UpdateFlags(0)<=result(16);
-        elsif Operation(12)='1' then--B-1
+        elsif Operation(21)='1' then--B-1
             result<=std_logic_vector(signed(DstOut)-1);
             F<=result(15 downto 0);
             UpdateFlags(0)<=result(16);
-        elsif Operation(13)='1' then--F=0
+        elsif Operation(23)='1' then--F=0
             result<= (others => '0');
             F<=result(15 downto 0);
             UpdateFlags(0)<=OutFlag(0);
-        elsif Operation(14)='1' then--Inv B
+        elsif Operation(27)='1' then--Inv B
             result<= not DstOut;
             F<=result(15 downto 0);
             UpdateFlags(0)<=OutFlag(0);
-        elsif Operation(15)='1' then--Logical shift right B
+        elsif Operation(28)='1' then--Logical shift right B
             result<=std_logic_vector(unsigned(DstOut) srl 1);
             F<=result(15 downto 0);
             UpdateFlags(0)<=OutFlag(0);
-        elsif Operation(16)='1' then --Rotate right
+        elsif Operation(29)='1' then --Rotate right
             result(15 downto 0)<= std_logic_vector(unsigned(DstOut (15 downto 0)) ror 1);
             F<=result(15 downto 0);
             UpdateFlags(0)<=OutFlag(0);
-        elsif Operation(17)='1' then--Roate Right with carry
+        elsif Operation(31)='1' then--Roate Right with carry
             UpdateFlags(0)<=DstOut(0);
             result <= std_logic_vector(unsigned(DstOut) srl 1);
             result(15)<=Carry;
             F<=result(15 downto 0);
-        elsif Operation(18)='1' then--Arithmatic shift right
+        elsif Operation(32)='1' then--Arithmatic shift right
             result(15)<=DstOut(15);
             result(14 downto 0) <= std_logic_vector(signed(DstOut(14 downto 0)) srl 1);
             F<=result(15 downto 0);
             UpdateFlags(0)<=OutFlag(0);
-        elsif Operation(19)='1' then--logical shift left
+        elsif Operation(33)='1' then--logical shift left
             result<=std_logic_vector(unsigned(DstOut) sll 1);
             F<=result(15 downto 0);
             UpdateFlags(0)<=OutFlag(0);
-        elsif Operation(20)='1' then--rotate left
+        elsif Operation(34)='1' then--rotate left
             result(15 downto 0) <= std_logic_vector(unsigned(DstOut (15 downto 0)) rol 1);
             F<=result(15 downto 0);
             UpdateFlags(0)<=OutFlag(0);
-        elsif Operation(21)='1' then--rotate left with carry
+        elsif Operation(19)='1' then--rotate left with carry
             UpdateFlags(0)<=DstOut(15);
             result(15 downto 0) <= std_logic_vector(unsigned(DstOut (15 downto 0)) sll 1);
             result(0)<=Carry;

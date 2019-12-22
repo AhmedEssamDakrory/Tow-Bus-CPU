@@ -6,8 +6,8 @@ ENTITY sig_generator IS
  	      ir                    :   IN std_logic_vector(15 DOWNTO 0 );
  	      MPC                   :   IN std_logic_vector(4 DOWNTO 0);
 	     	alu                    :   out std_logic_vector(7 DOWNTO 0);	--f0	0 2
-	     	alu1                  :   out std_logic_vector (10 DOWNTO 0);	-- 0 10
-	     	alu2                  :   out std_logic_vector(15 DOWNTO 0);	-- 0 8
+	     	alu1                  :   out std_logic_vector (15 DOWNTO 0);	-- 
+	     	alu2                  :   out std_logic_vector(15 DOWNTO 0);	-- 
 	     	out1                  :   out std_logic_vector (7 DOWNTO 0);	--f1
 	     	out2                  :   out std_logic_vector (7 DOWNTO 0);	--f2
 	     	in1                   :   out std_logic_vector (7 DOWNTO 0);	--f3
@@ -41,7 +41,7 @@ end function reduction;
 	 
   signal r_dest,temp1,r_src,temp6 : std_logic_vector(7 downto 0);
   signal temp3,temp4,temp5,temp7, temp8 : std_logic ;
-  signal alu1_temp : std_logic_vector(31 downto 0);
+  signal alu1_temp : std_logic_vector(15 downto 0);
   signal alu2_temp , alu2_temp_temp: std_logic_vector(15 downto 0);
   signal temp_out1 ,  temp_in1 : std_logic_vector(7 downto 0); 
   
@@ -58,10 +58,9 @@ BEGIN
   f5: decoder GENERIC MAP (n=>3) PORT MAP(ir(2 downto 0) , r_dest);-------edited
   f6: decoder GENERIC MAP (n=>3) PORT MAP(ir(8 downto 6) , r_src);
   
-  f7 : decoder GENERIC MAP (n=>4) PORT MAP(IR(15 DOWNTO 12) , alu2_temp_temp); -- 2operands
-  f8 : decoder generic map(n=>5) PORT MAP(IR(10 DOWNTO 6) , alu1_temp); -- 1 operand
+  f7 : decoder GENERIC MAP (n=>4) PORT MAP(IR(15 DOWNTO 12) , alu2_temp); -- 2operands
+  f8 : decoder generic map(n=>4) PORT MAP(IR(9 DOWNTO 6) , alu1_temp); -- 1 operand
     
-  alu2_temp <= '0' & alu2_temp_temp(15 downto 2) &(alu2_temp_temp(1) or alu2_temp_temp(13)); -- nop A at mov and cmp
     
   out1 <= temp_out1;
   in1 <= temp_in1;
@@ -94,8 +93,8 @@ BEGIN
    alu2 <= alu2_temp when    ((mpc = "11001" ) or (mpc = "11101"))  and ((ir(15) or ir(14) or ir(13) or ir(12)) = '1') else
           "0000000000000000";
    -- 1 operation
-   alu1 <= alu1_temp(10 downto 0) when ( (mpc = "11001") or (mpc = "11101" ) )and ((ir(15) or ir(14) or ir(13) or ir(12)) = '0') else
-          "00000000000";   
+   alu1 <= alu1_temp when ( (mpc = "11001") or (mpc = "11101" ) )and ((ir(15) or ir(14) or ir(13) or ir(12)) = '0') else
+          "0000000000000000";   
 
 END arch1;  
 

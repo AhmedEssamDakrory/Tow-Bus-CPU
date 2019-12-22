@@ -362,6 +362,7 @@ public:
 	}
 
 	void Debug_print_instr(){
+		freopen("analysed.txt" , "w" , stdout);
 		for(auto x : instr){
 			cout<<x.first<<" ";
 			printf("%d %d %d -- %d %d %d\n"  , x.second.first.Dir , x.second.first.mode , x.second.first.reg_num ,x.second.second.Dir , x.second.second.mode , x.second.second.reg_num );
@@ -370,7 +371,7 @@ public:
 
 	void Debug_print_codes(){
 		ofstream cout;
-		cout.open("ram1.dat");
+		cout.open("../ram1.dat");
 		for(auto x : codes) cout<<x.to_string()<<endl;
 		cout.close();
 	}

@@ -1,0 +1,14 @@
+#0
+mov #1,r0
+mov #3,r3
+add @r0,r1 
+add @r3,r4
+cmp r4,r3 
+beq 2
+mov #5 , r2
+inc r3
+mov #65535,r1
+inc r1
+bhi 1
+inc r1
+inc r2

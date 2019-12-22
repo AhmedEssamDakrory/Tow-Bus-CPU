@@ -1,0 +1,10 @@
+#0
+mov #9 , R1
+mov #11 , R3 
+add                r1,        R3
+sub R1 , r3
+inc r1
+dec r1
+br 1
+inc r1
+ror r1
